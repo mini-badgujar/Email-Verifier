@@ -24,10 +24,10 @@
             @csrf
             <div class="grid col-span-1 p-4 md-4">
                 <label for="emails" class="text-slate-500 pd-2 mx-0.5">Enter Email Id's</label>
-                <textarea class="resize-none h-96 border rounded p-4 bg-slate-100 mb-4" name="emails"></textarea>
+                <textarea class="resize-none h-96 border rounded p-4 bg-slate-100 mb-4" name="emails">{{ old('emails') }}</textarea>
 
                 @if($errors->any())
-                    {{ implode('', $errors->all('<div>:message</div>')) }}
+                    <div class="text-sm text-red-500 ">{{ implode('', $errors->all(':message')) }}</div>
                 @endif
 
                 <button
@@ -37,28 +37,6 @@
 
 
         <br>
-        <div class=" text-green-500">
-        </div>
-        <div class="flex justify-between items-center p-4 text-center">
-{{--
-            <div>
-                <div class="text-xl underline mb-4">Valid Emails</div>
-                @foreach ($emails as $email)
-                    <div class=" text-green-500">
-                        {{ $email }}
-                    </div>
-                @endforeach
-            </div>
-            <div>
-                <div class="text-xl underline mb-4">Invalid Emails</div>
-                @foreach ($emails as $email)
-                    <div class=" text-red-500">
-                        {{ $email }}
-                    </div>
-                @endforeach
-            </div> --}}
-
-        </div>
 
     </div>
     </div>

@@ -18,7 +18,13 @@
 
     <div class="border rounded-md border-slate-300 bg-white p-4 shadow-sm">
 
-
+        @if (session('success'))
+            <div role="alert"
+                class="my-8 rounded-md border-l-4 border-green-300 bg-green-100 p-4 text-green-700 opacity-75">
+                <p class="font-bold">Success</p>
+                <p>{{ session('success') }}</p>
+            </div>
+        @endif
 
         <div class="flex justify-between items-center p-4 text-center">
             <div>

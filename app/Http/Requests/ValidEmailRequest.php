@@ -22,7 +22,7 @@ class ValidEmailRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'emails' => 'email'
+            '*' => 'email:rfc,dns'
         ];
     }
 }

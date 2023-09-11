@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Laravel</title>
-    @vite('resources/css/app.css')
-    @vite('resources/js/app.js')
+
 
 </head>
 
@@ -24,22 +23,45 @@
             @csrf
             <div class="grid col-span-1 p-4 md-4">
                 <label for="emails" class="text-slate-500 pd-2 mx-0.5">Enter Email Id's</label>
-                <textarea class="resize-none h-96 border rounded p-4 bg-slate-100 mb-4" name="emails">{{ old('emails') }}</textarea>
-
-                @if($errors->any())
-                    <div class="text-sm text-red-500 ">{{ implode('', $errors->all(':message')) }}</div>
-                @endif
+                <textarea type="text"  class="resize-none h-96 border rounded p-4 bg-slate-100 mb-4" name="emails" id="emails" >
+                    {{ old('emails') }}
+                </textarea>
 
                 <button
                     class="text-sm rounded-md border border-slate-300 bg-green-100 px-2.5 py-2.5 text-center text-slate-700 hover:bg-slate-100">Verify</button>
             </div>
         </form>
 
-
         <br>
 
+        <div class="flex justify-between p-2 text-center">
+            <div>
+                @isset($ValidEmail)
+                    <div class="text-xl underline mb-4">Valid Emails</div>
+                    @foreach ($ValidEmail as $email)
+                        <div class=" text-green-500">
+                            {{ $email }}
+                        </div>
+                    @endforeach
+                @endisset
+            </div>
+            <div>
+                @isset($InvalidEmail)
+                    <div class="text-xl underline mb-4">Invalid Emails</div>
+                    @foreach ($InvalidEmail as $email)
+                        <div class=" text-red-500">
+                            {{ $email }}
+                        </div>
+                    @endforeach
+                @endisset
+            </div>
+
+        </div>
     </div>
-    </div>
+
+    @vite('resources/css/app.css')
+    @vite('resources/js/app.js')
+    @vite('resources/js/email-validator.js')
 </body>
 
 </html>

@@ -17,7 +17,7 @@ async function isEmailValid(email) {
     // console.log(valid);
 
     if (valid)
-        console.log(email + " : is Valid");
+        console.log(email + " : valid");
     else
         console.log(email+ " : " + validators[reason].reason);
   }

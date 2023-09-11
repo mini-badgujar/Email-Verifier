@@ -16,7 +16,7 @@ use App\Http\Controllers\VerifyEmailController;
 */
 
 Route::get('/', function () {
-    return redirect()->route('VerifyEmail.index');
+    return redirect()->route('VerifyEmail.index')->withInput();
 });
 
 Route::resource('VerifyEmail', VerifyEmailController::class);

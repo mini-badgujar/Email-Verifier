@@ -18,6 +18,7 @@ class VerifyEmailController extends Controller
 
     public function store(Request $request)
     {
+        $request->flash();
          // getting data from form email textarea using request and converting a string into array of email address
         $emails = collect(explode("\r\n", $request->input('emails')));
 
@@ -36,7 +37,7 @@ class VerifyEmailController extends Controller
             $command = 'node ..\resources\js\email-validator.js ' . $email;  //command for node file execution
             $output= shell_exec($command);       // php method to run the command in command line
 
-            if (Str::contains($output, 'is Valid')){
+            if (Str::contains($output, 'valid')){
                 array_push($validEmail, $output);          // pusing valid emails in valid emails array
             } else
             {
